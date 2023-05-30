@@ -6,20 +6,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class PosterManagerTest {
-    PosterManager manager = new PosterManager();
 
-    @BeforeEach
-    public void setup() {
+    @Test
+    public void savedPoster() {
+        PosterManager manager = new PosterManager();
+
         manager.add("Poster I");
         manager.add("Poster II");
         manager.add("Poster III");
         manager.add("Poster IV");
         manager.add("Poster V");
         manager.add("Poster VI");
-    }
-
-    @Test
-    public void savedPoster() {
 
         String[] expected = {"Poster I", "Poster II", "Poster III", "Poster IV", "Poster V", "Poster VI"};
         String[] actual = manager.findAll();
@@ -29,8 +26,16 @@ public class PosterManagerTest {
 
     @Test
     public void shouldFindLast() {
+        PosterManager manager = new PosterManager(6);
 
-        String[] expected = {"Poster V", "Poster IV", "Poster III", "Poster II", "Poster I"};
+        manager.add("Poster I");
+        manager.add("Poster II");
+        manager.add("Poster III");
+        manager.add("Poster IV");
+        manager.add("Poster V");
+        manager.add("Poster VI");
+
+        String[] expected = {"Poster VI", "Poster V", "Poster IV", "Poster III", "Poster II", "Poster I"};
         String[] actual = manager.findlast();
 
         Assertions.assertArrayEquals(expected, actual);
@@ -48,7 +53,7 @@ public class PosterManagerTest {
         manager.add("Poster VI");
 
 
-        String[] expected = {"Poster V", "Poster IV", "Poster III", "Poster II", "Poster I"};
+        String[] expected = {"Poster VI", "Poster V", "Poster IV", "Poster III", "Poster II"};
         String[] actual = manager.findlast();
         Assertions.assertArrayEquals(expected, actual);
 

@@ -37,7 +37,7 @@ public class PosterManager {
         }
         String[] reversed = new String[resultLength];
         for (int i = 0; i < reversed.length; i++) {
-            reversed[i] = posters[resultLength - 1 - i];
+            reversed[i] = posters[posters.length - 1 - i];
         }
         return reversed;
     }
